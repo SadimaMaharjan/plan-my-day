@@ -55,7 +55,7 @@ $(document).ready(function () {
   // retrieveing event saved in local storage
 
   function renderEvents() {
-    for (var i = 9; i < 21; i++) {
+    for (var i = 9; i < 19; i++) {
       $(`#hour-${i}`)
         .children(".description")
         .val(localStorage.getItem(`hour-${i}`));
