@@ -34,4 +34,4 @@ The following screenshots demonstrates the application functionality:
 
 The following link redirects to the deployed application:
 
-[Github Deployment Link](https://sadimamaharjan.github.io//)
+[Github Deployment Link](https://sadimamaharjan.github.io/plan-my-day/)
