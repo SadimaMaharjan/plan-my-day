@@ -11,7 +11,8 @@ $(document).ready(function () {
     renderEvents();
     setColors();
   }
-  // TODO: Add a listener for click events on the save button. This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener function? How can DOM traversal be used to get the "hour-x" id of the time-block containing the button that was clicked? How might the id be useful when saving the description in local storage?
+
+  // Add an event listener when save buttons are clicked and also save the event in local storage
 
   btnSave.on("click", function (event) {
     event.preventDefault();
@@ -24,9 +25,11 @@ $(document).ready(function () {
       .trim();
     localStorage.setItem(eventId, hourlyEvent);
   });
-  //
-  // TODO: Add code to apply the past, present, or future class to each time block by comparing the id to the current hour. HINTS: How can the id attribute of each time-block be used to conditionally add or remove the past, present, and future classes? How can Day.js be used to get the current hour in 24-hour time?
+
+  // Using the id attribute of each time-block to add or remove the past, present and future classes and setting colors for each time-block
+
   function setColors() {
+    // getting current hour using dayjs
     var currentHour = dayjs().format("H");
     //console.log(currentHour);
 
@@ -48,8 +51,9 @@ $(document).ready(function () {
       }
     }
   }
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set the values of the corresponding textarea elements. HINT: How can the id attribute of each time-block be used to do this?
+
+  // retrieveing event saved in local storage
+
   function renderEvents() {
     for (var i = 9; i < 21; i++) {
       $(`#hour-${i}`)
@@ -57,13 +61,14 @@ $(document).ready(function () {
         .val(localStorage.getItem(`hour-${i}`));
     }
   }
-  //
-  // TODO: Add code to display the current date in the header of the page.
+
+  // code to display the current date in the header of the page.
 
   function displayCurrentDay() {
     var today = dayjs().format("dddd, MMMM D");
     currentDayDisplayEl.text(today);
   }
 
+  //initialisation
   init();
 });
