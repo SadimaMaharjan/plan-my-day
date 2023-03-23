@@ -2,6 +2,7 @@
 var currentDayDisplayEl = $("#currentDay");
 var timeBlock = $(".time-block");
 var btnSave = $(".saveBtn");
+var messageNotification = $(".notification");
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that the code isn't run until the browser has finished rendering all the elements in the html.
 
@@ -24,6 +25,12 @@ $(document).ready(function () {
       .val()
       .trim();
     localStorage.setItem(eventId, hourlyEvent);
+
+    // display the notification message for 5 seconds when an event is added to the time-block
+    messageNotification.text("Appointment added to local storage ✔️").show();
+    setTimeout(function () {
+      messageNotification.text("Appointment added to local storage ✔️").hide();
+    }, 5000);
   });
 
   // Using the id attribute of each time-block to add or remove the past, present and future classes and setting colors for each time-block
@@ -65,7 +72,7 @@ $(document).ready(function () {
   // code to display the current date in the header of the page.
 
   function displayCurrentDay() {
-    var today = dayjs().format("dddd, MMMM D");
+    var today = dayjs().format("dddd, MMMM D, YYYY");
     currentDayDisplayEl.text(today);
   }
 
